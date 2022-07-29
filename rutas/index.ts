@@ -21,7 +21,7 @@ app.post('/users', (req, res) => {
   });
 });
 
-app.patch('/users/:userId', (req, res) => {//aca necesitamos un id
+app.patch('/users/:userId', (req, res) => {//aca necesitamos un id y los dos puntos le indican q lo q viene ed dinamico
     res.json({
         id: req.params.userId,
         name: "tu nombre rey"

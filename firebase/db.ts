@@ -7,5 +7,6 @@ admin.initializeApp({
 });
 
 const firestore = admin.firestore();
+const rtdb = admin.database();//referencia a la "realtime database"
 
-export { firestore }
+export { firestore, rtdb }
