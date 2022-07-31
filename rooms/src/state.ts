@@ -8,6 +8,7 @@ export const state = {
       nombre:"",
       messages: []
     },
+    
     listeners: [],
     init() {
         const chatroomsRef = rtdb.ref("/chatrooms/general");
