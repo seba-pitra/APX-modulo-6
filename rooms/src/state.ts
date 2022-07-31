@@ -10,17 +10,15 @@ export const state = {
     },
     listeners: [],
     init() {
-//cada vez q haya un cambio o un msj nuevo, el state se va a enterar xq esta conectado a la rtdb
-//el state se encarga de traer y guardar la informacion de los datos para q los comps puedan usarla
-        const chatroomsRef = rtdb.ref("/chatrooms/general");//hacemos ref al lugar de la bd q tendrá todos los msj
+        const chatroomsRef = rtdb.ref("/chatrooms/general");
         const currentState = this.getState();
         chatroomsRef.on("value", (snapshot) => {
-            const messagesFromServer = snapshot.val();//cada vez q haya un cambio nos traeremos:
-            const messagesList = map(messagesFromServer.messages);//como los msj de la bd son objetos lo convierto en array con esta funcion map
-            currentState.messages = messagesList//solo esta parte(messages) del server y guardar en state
+            const messagesFromServer = snapshot.val();
+            const messagesList = map(messagesFromServer.messages);
+            currentState.messages = messagesList
             console.log(messagesList);
             
-            this.setState(currentState)//todos los comps van a tener acceso a los datos
+            this.setState(currentState)
         })
     },
     getState() {
@@ -31,8 +29,8 @@ export const state = {
         currentState.nombre = nombre
         this.setState(currentState) 
     },
-    pushMessages(message: string) {//este msj va al backend. Para esto usamos el fetch con metodo "post"
-        const nombreDelState = this.data.nombre//el nombre q le paso al state en la home-page
+    pushMessages(message: string) {
+        const nombreDelState = this.data.nombre
         fetch(API_BASE_URL + "/messages", {
             method: "post",
             headers: {
