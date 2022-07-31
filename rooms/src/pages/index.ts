@@ -1,4 +1,4 @@
-import { Route, Router } from "@vaadin/router"
+// import { Route, Router } from "@vaadin/router"
 import { state } from "../state"
 
 class Home extends HTMLElement {
@@ -10,7 +10,7 @@ class Home extends HTMLElement {
             const target = e.target as any
             const name = target.nombre.value
             state.setNombre(name)
-            Router.go("/chat")
+            // Router.go("/chat")
         })
     }
     render() {
