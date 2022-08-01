@@ -1,7 +1,21 @@
 import * as express from "express"
 
+console.log(process.env.NODE_ENV);
 const app = express();
 const port = process.env.PORT || 3000//el valor de la constante nos la da heroku y sino es 3000
+
+// $ export USER_FULLNAME=seba ==>> declaracion de variables de ambientes
+//NODE_ENV es una variable de ambiente muy conocida q usamos.Tiene dos posibles valores:
+//"development" y "production".
+//De alguna manera, tenemos q hacer q nuestra computadora el valor de ella sea development y 
+//cuando la subamos a heroku sea "production". Lo solucionamos con la libreria "dotenv"
+
+app.get("/env",(req,res) => {
+    res.json({
+        environment:process.env.NODE_ENV
+    })
+})
+
 app.get("/hola",(req,res) => {
     res.json({
         message:"hola soy el servidor, heroku"
