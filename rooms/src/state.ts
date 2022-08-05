@@ -15,6 +15,7 @@ export const state = {
     listeners: [],
     init() {
         const lastStorageState = localStorage.getItem("state")
+        return lastStorageState
     },
     listenRoom() {
         const cs = this.getState();
